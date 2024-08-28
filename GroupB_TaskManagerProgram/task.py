@@ -14,7 +14,7 @@ class Task:
     def set_task_name (self, new_task_name):
         #Checks if the input is a string.
         if isinstance(new_task_name,str):
-            return self.task_name
+            self.task_name = new_task_name
         else:
             print("Error Occured, Please Type the Description in Strings")
 
@@ -22,17 +22,17 @@ class Task:
     def set_description (self, new_description):
         #Checks if the input is a string.
         if isinstance(new_description,str):
-            return self.description
+            self.description = new_description
         else:
             print("Error Occured, Please Type the Description in Strings")
 
-    def set_due_date (self, new_date):
+    def set_due_date (self, new_due_date):
         #Checks if the input is in datetime.
         current_date = date.today()
-        if isinstance(new_date, date.datetime):
+        if isinstance(new_due_date, date):
             #Checks if the New Due Date is already passed the Current Day. 
-            if new_date <= current_date:
-                return self.due_date
+            if new_due_date >= current_date:
+                self.due_date = new_due_date
         else:
             print("Error Occured, Please Type the New Due Date")
    
