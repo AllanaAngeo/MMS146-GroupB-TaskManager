@@ -33,9 +33,8 @@ class TaskManager(Task):
                 if new_due_date:
                     self.set_due_date()
 
-    def delete_task (self, task_name): #I will work on this next
-        if task_name in TaskManager.task_list:
-            TaskManager.task_list.remove(task_name)
+    def delete_task (task_name):
+        TaskManager.task_list = [task for task in TaskManager.task_list if task["Task Name"] != task_name]
 
     @classmethod
     def view_all_tasks(cls): #this is like flawless very nyamers this will stay
