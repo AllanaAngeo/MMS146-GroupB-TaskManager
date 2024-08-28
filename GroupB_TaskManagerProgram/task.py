@@ -1,7 +1,13 @@
 from datetime import date
 
 class Task:
-
+    '''
+    Task class object that allows to:
+       - create instances of tasks that have:
+           - name, description, due date, priority level, and completion status
+       - change the name, description, due date, priority level, and completion status of a task
+       - 
+    '''
     def __init__(self, task_name, description, due_date, priority_level=0, completion_status="Not Started"):
         self.task_name = task_name
         self.description =  description
@@ -10,7 +16,9 @@ class Task:
         self.priority_level_num = 0                 #This will be used for Sorting out the Priorities in TaskManager
         self.completion_status = completion_status  #Ongoing or Completed ganern
         self.completion_status_num = 0              #This will be used for Sorting out the Status in TaskManager
-    #update the name of the task
+    '''
+    update the name of the task
+    '''
     def set_task_name (self, new_task_name):
         #Checks if the input is a string.
         if isinstance(new_task_name,str):
@@ -18,14 +26,18 @@ class Task:
         else:
             print("Error Occured, Please Type the Description in Strings")
 
-    #update the description of the task
+    '''
+    update the description of the task
+    '''
     def set_description (self, new_description):
         #Checks if the input is a string.
         if isinstance(new_description,str):
             self.description = new_description
         else:
             print("Error Occured, Please Type the Description in Strings")
-
+    '''
+    update the due date of the task
+    '''
     def set_due_date (self, new_due_date):
         #Checks if the input is in datetime.
         current_date = date.today()
@@ -35,7 +47,9 @@ class Task:
                 self.due_date = new_due_date
         else:
             print("Error Occured, Please Type the New Due Date")
-   
+    '''
+    update the priority level of the task
+    '''
     def set_priority(self, new_priority_level):
          #Checks if the input is in numbers(integers)
         if isinstance(new_priority_level, int):
@@ -51,8 +65,9 @@ class Task:
             #Else, prints out error
             else:
                 print("Error Occured, Please pick from 0-2")
-
-    #update the completion status of the task 
+    '''
+    update the completion status of the task
+    '''
     def set_completion_status (self, new_completion_status):
         status_mapping = {
                 "Not Started": 2,
@@ -65,8 +80,9 @@ class Task:
                 self.completion_status_num = status_mapping[new_completion_status]
         else: 
             print('Error Occured, Please pick from "Not Started", "In Progress", and "Completed"')
-
-    #Info of Tasks, and used for checking the Attributes.
+    '''
+    Information of tasks, and used for checking the Attributes
+    '''
     def task_info (self):
             task_details = {
                 "Name": self.task_name,
