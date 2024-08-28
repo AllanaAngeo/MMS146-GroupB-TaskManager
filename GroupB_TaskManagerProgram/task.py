@@ -6,7 +6,7 @@ class Task:
        - create instances of tasks that have:
            - name, description, due date, priority level, and completion status
        - change the name, description, due date, priority level, and completion status of a task
-       - 
+       - show the details of a task
     '''
     def __init__(self, task_name, description, due_date, priority_level=0, completion_status="Not Started"):
         self.task_name = task_name
