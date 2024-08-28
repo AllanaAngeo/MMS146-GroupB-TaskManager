@@ -18,19 +18,20 @@ class TaskManager(Task):
            TaskManager.task_list.append(task_info)
            print(f"Task '{task_name}' added!")
 
-    def edit_task (cls, task_name, new_task_name=None, new_description=None, new_priority_level=None, new_completion_status=None, new_due_date=None):
+    #Not final, the code should look something like this (uses the functions of the task class for the edit_task function)
+    def edit_task (self, cls, task_name, new_task_name=None, new_description=None, new_priority_level=None, new_completion_status=None, new_due_date=None):
         for task in cls.task_list: #finished edit method HIHI
             if task["Task Name"] == task_name:
                 if new_task_name:
-                    task["Task Name"] = new_task_name
+                    self.set_task_name()
                 if new_description:
-                    task["Description"] = new_description
+                    self.set_description()
                 if new_priority_level:
-                    task["Priority Level"] = new_priority_level
+                    self.set_priority()
                 if new_completion_status:
-                    task["Completion Status"] = new_completion_status
+                    self.set_completion_status()
                 if new_due_date:
-                    task["Due_Date"] = new_due_date
+                    self.set_due_date()
 
     def delete_task (self, task_name): #I will work on this next
         if task_name in TaskManager.task_list:
