@@ -14,6 +14,9 @@ class TaskManager(Task):
         super().__init__(task_name, description, due_date) #Inherits Task class attributes and methods
 
     def add_task (self, task_name): 
+        '''
+        Add a task to the list
+        '''
        if self.task_name == task_name: #Checks if the task name is an attribute value of an instance
            task_info = {
                 "Name": self.task_name,
@@ -26,6 +29,9 @@ class TaskManager(Task):
            print(f"Task '{self.task_name}' added!") #Notifies if the method has been executed successfully
            
     def edit_task (self, task_name, new_task_name=None, new_description=None, new_priority_level=None, new_completion_status=None, new_due_date=None):
+        '''
+        Edit a task
+        '''
         for task in TaskManager.task_list: #Use a for loop to go through each item (dictionary) of the task list
             if task["Name"] == task_name: #Checks if the task name is present in an item's (dictionary) key "Name" value
                 TaskManager.delete_task(task_name) #Removes the matching dictionary
@@ -50,20 +56,32 @@ class TaskManager(Task):
         print(f"Task '{self.task_name}' updated!") #Notifies if the method is successful
 
     def delete_task (task_name):
+        '''
+        Remove a task from the list
+        '''
         TaskManager.task_list = [task for task in TaskManager.task_list if task["Name"] != task_name]
         #Updates the task list to only include dictionaries whose key ["Name"] dont match with the task name
         print(f"Removed {task_name} from the list of tasks!")
 
     @classmethod
     def view_all_tasks(cls): #prints the contents of the list
+        ''' 
+        View all of the tasks
+        '''
         print(cls.task_list)
 
     @classmethod
     def sort_tasks_by_priority (cls):
+        '''
+        Display the task by order of priority
+        '''
         cls.task_list.sort(key=lambda task: task['Priority Level']) #Sorts the task list based on the dictionary key ["Priority Level"]
         print(f"Sorted tasks according to priority")
 
     def get_overdue_tasks ():
+        '''
+        Get the tasks that are not yet done but are past the deadline
+        '''
         overdue_tasks = [] #Create list for overdue tasks
         current_date = date.today() #Store today's date
         for task in TaskManager.task_list: #Checks if there are any due dates that are before today's date and adds them to the overdue list
